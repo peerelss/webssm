@@ -3,8 +3,11 @@ package com.heitian.ssm.controller;
 import com.heitian.ssm.model.TumblrModel;
 import com.heitian.ssm.service.TumblrService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +34,20 @@ public class TumblrController {
     @RequestMapping("/addTumblr")
     @ResponseBody
     public String add2Tumblr(String name,String tag,String level){
-        System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
-        TumblrModel tumblrModel=new TumblrModel(name,tag,level);
-        mTumblrService.addTumblr(tumblrModel);
-        System.out.println("long = "+tumblrModel.getId());
-        return "success";
+        if(null==name||"".equals(name)){
+            return "error";
+        }else {
+            System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
+            TumblrModel tumblrModel=new TumblrModel(name,tag,level);
+            mTumblrService.addTumblr(tumblrModel);
+            System.out.println("long = "+tumblrModel.getId());
+            return "success";
+        }
+    }
+    @RequestMapping(value="/delete/{id}", method = {RequestMethod.GET})
+    @ResponseBody
+    public String getDetail(@PathVariable(value="id") Long id){
+        mTumblrService.deleteTumblr(id);
+        return "success"+" id = "+id;
     }
 }

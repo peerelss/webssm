@@ -17,6 +17,13 @@ public class TumblrModel {
         this.level = level;
     }
 
+    public TumblrModel(Long id, String name, String tags, String level) {
+        this.id = id;
+        this.name = name;
+        this.tags = tags;
+        this.level = level;
+    }
+
     public Long getId() {
         return id;
     }

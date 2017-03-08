@@ -14,16 +14,17 @@ import java.util.List;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class TumblrServiceImpl implements TumblrService{
+public class TumblrServiceImpl implements TumblrService {
     @Resource
     private TumblrDao mTumblrDao;
+    private long mId;
 
     public List<TumblrModel> getAllTumblr() {
         return mTumblrDao.selectAllTumblr();
     }
 
     public TumblrModel getTumblrByName(String emailOrPhone, Short state) {
-        return mTumblrDao.selectTumblrByPhoneOrEmail(emailOrPhone,state);
+        return mTumblrDao.selectTumblrByPhoneOrEmail(emailOrPhone, state);
     }
 
     public TumblrModel getTumblrById(Long userId) {
@@ -31,6 +32,10 @@ public class TumblrServiceImpl implements TumblrService{
     }
 
     public long addTumblr(TumblrModel tumblrModel) {
-      return   mTumblrDao.addTumblr(tumblrModel);
+        return mTumblrDao.addTumblr(tumblrModel);
+    }
+
+    public void deleteTumblr(long id) {
+        mTumblrDao.deleteTumblr(mId);
     }
 }

@@ -20,4 +20,6 @@ public interface TumblrService {
     TumblrModel getTumblrById(Long userId);
 
     long addTumblr(TumblrModel tumblrModel);
+
+    void deleteTumblr(long id);
 }
