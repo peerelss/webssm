@@ -1,0 +1,19 @@
+p{
+    color:red;
+    text-align:center;
+}
+#para1{
+    text-align:center;
+    color:red;
+}
+.center {
+    text-align:center;
+}
+.name_tag{
+    display:inline-block;
+    width:220px;
+    background:#ff0000;
+}
+body {background-color:#b0c4de;}
+p {background-color:#e0ffff;}
+h3 {background-color:#6495ed;}
