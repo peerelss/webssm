@@ -21,5 +21,5 @@ public interface TumblrService {
 
     long addTumblr(TumblrModel tumblrModel);
 
-    void deleteTumblr(long id);
+    void deleteTumblr(int id);
 }

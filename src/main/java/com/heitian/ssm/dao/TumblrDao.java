@@ -19,5 +19,5 @@ public interface TumblrDao {
     List<TumblrModel> selectAllTumblr();
 
     long addTumblr(TumblrModel tumblrModel);
-    void deleteTumblr(long id);
+    void deleteTumblr(int id);
 }

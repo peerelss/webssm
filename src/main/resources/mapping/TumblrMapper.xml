@@ -27,7 +27,7 @@
     <insert id="addTumblr" parameterType="com.heitian.ssm.model.TumblrModel" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_tumblr(name,tags,level) VALUES (#{name},#{tags},#{level})
     </insert>
-    <delete id="deleteTumblr" parameterType="java.lang.Long">
+    <delete id="deleteTumblr" parameterType="int">
         delete from t_tumblr where id=#{id}
     </delete>
 </mapper>

@@ -46,7 +46,7 @@ public class TumblrController {
     }
     @RequestMapping(value="/delete/{id}", method = {RequestMethod.GET})
     @ResponseBody
-    public String getDetail(@PathVariable(value="id") Long id){
+    public String getDetail(@PathVariable(value="id") int id){
         mTumblrService.deleteTumblr(id);
         return "success"+" id = "+id;
     }

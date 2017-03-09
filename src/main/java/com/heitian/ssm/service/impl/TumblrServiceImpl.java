@@ -17,7 +17,6 @@ import java.util.List;
 public class TumblrServiceImpl implements TumblrService {
     @Resource
     private TumblrDao mTumblrDao;
-    private long mId;
 
     public List<TumblrModel> getAllTumblr() {
         return mTumblrDao.selectAllTumblr();
@@ -35,7 +34,7 @@ public class TumblrServiceImpl implements TumblrService {
         return mTumblrDao.addTumblr(tumblrModel);
     }
 
-    public void deleteTumblr(long id) {
-        mTumblrDao.deleteTumblr(mId);
+    public void deleteTumblr(int id) {
+        mTumblrDao.deleteTumblr(id);
     }
 }
