@@ -4,10 +4,10 @@ package com.heitian.ssm.model;
  * Created by root on 17-3-6.
  */
 public class TumblrModel {
-    private Long id;
-    private String name;
-    private String tags;
-    private String level;
+    private Long id=0l;
+    private String name="unknown";
+    private String tags="unknown";
+    private String level="0";
     public TumblrModel(){
 
     }

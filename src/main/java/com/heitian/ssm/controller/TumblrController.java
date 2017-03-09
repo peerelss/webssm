@@ -3,6 +3,9 @@ package com.heitian.ssm.controller;
 import com.alibaba.fastjson.JSON;
 import com.heitian.ssm.model.TumblrModel;
 import com.heitian.ssm.service.TumblrService;
+import com.heitian.ssm.utils.ClassUtil;
+import com.heitian.ssm.utils.FIleUtil;
+import com.heitian.ssm.utils.StringUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2017/1/16.
@@ -136,6 +141,28 @@ public class TumblrController {
         response.setContentType("application/json;charset=UTF-8");
         //把json响应回页面
         response.getWriter().print(json);
+
+    }
+
+    @RequestMapping("/getAllTumblr")
+    @ResponseBody
+    public String getAllTumblr(){
+        return "success";
+        //  return StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
+    }
+    @RequestMapping("/getJsonList")
+    public void test5(HttpServletResponse response) throws Exception{
+        try {
+            //把对象序列化为json类型
+            String json = JSON.toJSONString(mTumblrService.getAllTumblr());
+            //设置响应类型和编码类型
+            response.setContentType("application/json;charset=UTF-8");
+            //把json响应回页面
+            response.getWriter().print(json);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

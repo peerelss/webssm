@@ -1,7 +1,6 @@
 package com.heitian.ssm.utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +21,37 @@ public class FIleUtil {
         }catch(Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+    public static void putStringToTxt(String name ,String content) {
+        if(content==null){
+            return;
+        }
+        //    log.info(content);
+        FileWriter fw = null;
+        try {
+            //如果文件存在，则追加内容；如果文件不存在，则创建文件
+            File f=new File("tumblr");
+            if(!f.exists()){
+                f.mkdir();
+            }
+            File file= new File(f,name+"_json.txt");
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            fw = new FileWriter(file, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PrintWriter pw = new PrintWriter(fw);
+        pw.println(content);
+        pw.flush();
+        try {
+            fw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
