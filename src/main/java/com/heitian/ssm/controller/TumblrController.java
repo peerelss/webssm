@@ -147,8 +147,7 @@ public class TumblrController {
     @RequestMapping("/getAllTumblr")
     @ResponseBody
     public String getAllTumblr(){
-        return "success";
-        //  return StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
+        return StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
     }
     @RequestMapping("/getJsonList")
     public void test5(HttpServletResponse response) throws Exception{
@@ -159,10 +158,40 @@ public class TumblrController {
             response.setContentType("application/json;charset=UTF-8");
             //把json响应回页面
             response.getWriter().print(json);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @RequestMapping(value="/update", method = {RequestMethod.GET})
+    @ResponseBody
+    public String updateTumblr(String name,String tags,String level,int id){
+        if(name==null){
+            return "error";
+        }
+        TumblrModel model1=mTumblrService.getTumblrById(id);
+        if(model1==null){
+            mTumblrService.addTumblr(new TumblrModel(name,tags,level));
+            return "insert success";
+        }else {
+            TumblrModel model=new TumblrModel(id,name,tags,level);
+            mTumblrService.updateTumblr(model);
+            return "update success";
+        }
+    }
+
+    @RequestMapping(value="/detail/{id}", method = {RequestMethod.GET})
+    public void showTumblrDetail(HttpServletResponse response,@PathVariable(value="id") int id){
+        try {
+            TumblrModel user = mTumblrService.getTumblrById(id);
+            //把对象序列化为json类型
+            String json = JSON.toJSONString(user);
+            //设置响应类型和编码类型
+            response.setContentType("application/json;charset=UTF-8");
+            //把json响应回页面
+            response.getWriter().print(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

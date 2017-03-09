@@ -4,7 +4,7 @@ package com.heitian.ssm.model;
  * Created by root on 17-3-6.
  */
 public class TumblrModel {
-    private Long id=0l;
+    private int id=0;
     private String name="unknown";
     private String tags="unknown";
     private String level="0";
@@ -17,18 +17,18 @@ public class TumblrModel {
         this.level = level;
     }
 
-    public TumblrModel(Long id, String name, String tags, String level) {
+    public TumblrModel(int id, String name, String tags, String level) {
         this.id = id;
         this.name = name;
         this.tags = tags;
         this.level = level;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

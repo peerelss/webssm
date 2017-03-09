@@ -26,8 +26,8 @@ public class TumblrServiceImpl implements TumblrService {
         return mTumblrDao.selectTumblrByPhoneOrEmail(emailOrPhone, state);
     }
 
-    public TumblrModel getTumblrById(int userId) {
-        return mTumblrDao.selectTumblrById(userId);
+    public TumblrModel getTumblrById(int id) {
+        return mTumblrDao.selectTumblrById(id);
     }
 
     public long addTumblr(TumblrModel tumblrModel) {
@@ -36,5 +36,9 @@ public class TumblrServiceImpl implements TumblrService {
 
     public void deleteTumblr(int id) {
         mTumblrDao.deleteTumblr(id);
+    }
+
+    public void updateTumblr(TumblrModel model){
+        mTumblrDao.updateTumblr(model);
     }
 }

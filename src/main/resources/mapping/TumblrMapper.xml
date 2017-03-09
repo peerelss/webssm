@@ -10,8 +10,8 @@
     </resultMap>
 
     <select id="selectTumblrById" parameterType="int" resultMap="TumblrBaseMap">
-        SELECT * FROM t_user
-        WHERE id = #{userId}
+        SELECT * FROM t_tumblr
+        WHERE id = #{id}
     </select>
 
     <select id="selectTumblrByPhoneOrEmail" resultMap="TumblrBaseMap">
@@ -30,4 +30,8 @@
     <delete id="deleteTumblr" parameterType="int">
         delete from t_tumblr where id=#{id}
     </delete>
+
+    <update id="updateTumblr" parameterType="com.heitian.ssm.model.TumblrModel" >
+        update t_tumblr set name=#{name},tags=#{tags},level=#{level} where id=#{id}
+    </update>
 </mapper>
