@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface TumblrDao {
 
-    TumblrModel selectTumblrById(@Param("userId") Long userId);
+    TumblrModel selectTumblrById(@Param("userId") int userId);
 
     TumblrModel selectTumblrByPhoneOrEmail(@Param("emailOrPhone") String emailOrPhone, @Param("state") Short state);
 

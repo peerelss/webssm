@@ -9,7 +9,7 @@
         <result column="level" property="level" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="selectTumblrById" parameterType="java.lang.Long" resultMap="TumblrBaseMap">
+    <select id="selectTumblrById" parameterType="int" resultMap="TumblrBaseMap">
         SELECT * FROM t_user
         WHERE id = #{userId}
     </select>
@@ -21,7 +21,7 @@
     </select>
 
     <select id="selectAllTumblr" resultMap="TumblrBaseMap">
-        SELECT * FROM t_user
+        SELECT * FROM t_tumblr
     </select>
     <!--插入数据库-->
     <insert id="addTumblr" parameterType="com.heitian.ssm.model.TumblrModel" useGeneratedKeys="true" keyProperty="id">

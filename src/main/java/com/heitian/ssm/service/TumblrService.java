@@ -17,7 +17,7 @@ public interface TumblrService {
 
     TumblrModel getTumblrByName(String emailOrPhone, Short state);
 
-    TumblrModel getTumblrById(Long userId);
+    TumblrModel getTumblrById(int userId);
 
     long addTumblr(TumblrModel tumblrModel);
 

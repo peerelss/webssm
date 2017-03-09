@@ -26,7 +26,7 @@ public class TumblrServiceImpl implements TumblrService {
         return mTumblrDao.selectTumblrByPhoneOrEmail(emailOrPhone, state);
     }
 
-    public TumblrModel getTumblrById(Long userId) {
+    public TumblrModel getTumblrById(int userId) {
         return mTumblrDao.selectTumblrById(userId);
     }
 
