@@ -30,6 +30,8 @@ public class ManagerController {
         }else {
 
         }
-        return StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
+        String result= StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
+        System.out.println(result);
+        return result;
     }
 }
