@@ -27,19 +27,15 @@ public class FIleUtil {
         if(content==null){
             return;
         }
-        //    log.info(content);
+        System.out.println(" file = "+name);
         FileWriter fw = null;
         try {
             //如果文件存在，则追加内容；如果文件不存在，则创建文件
-            File f=new File("tumblr");
+            File f=new File(name);
             if(!f.exists()){
-                f.mkdir();
+                f.createNewFile();
             }
-            File file= new File(f,name+"_json.txt");
-            if(!file.exists()){
-                file.createNewFile();
-            }
-            fw = new FileWriter(file, true);
+            fw = new FileWriter(f, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
