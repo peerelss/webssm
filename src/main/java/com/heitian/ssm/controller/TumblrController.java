@@ -134,7 +134,7 @@ public class TumblrController {
     public void test1(HttpServletResponse response) throws Exception{
         TumblrModel[] tumblrModels=new TumblrModel[2];
         tumblrModels[0] = new TumblrModel("getFastJson", "张晓晓","1");
-        tumblrModels[1]=  new TumblrModel("getJackson", "张晓晓","1");;
+        tumblrModels[1]=  new TumblrModel("getJackson", "张晓晓","1");
         ObjectMapper mapper = new  ObjectMapper();
         String json = mapper.writeValueAsString(tumblrModels);
         //设置响应类型和编码类型
