@@ -4,6 +4,11 @@
  例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
   -->
 <mapper namespace="com.kevin.mybatis.mapping.userMapper">
+    <resultMap id="UserBaseMap" type="com.kevin.mybatis.model.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="BIGINT"/>
+    </resultMap>
      <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
      使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
      resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
@@ -16,4 +21,7 @@
          resultType="com.kevin.mybatis.model.User">
          select * from users where id=#{id}
      </select>
+    <select id="getAllUser" parameterType="java.lang.String" resultMap="UserBaseMap">
+        SELECT * FROM users WHERE name LIKE CONCAT(CONCAT('%', #{text}), '%');
+    </select>
 </mapper>

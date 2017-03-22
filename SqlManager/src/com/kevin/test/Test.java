@@ -2,6 +2,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.List;
 
 import com.kevin.mybatis.model.User;
 import org.apache.ibatis.io.Resources;
@@ -34,5 +35,10 @@ public class Test {
         //执行查询返回一个唯一user对象的sql
         User user = session.selectOne(statement, 1);
         System.out.println(user);
+        statement = "com.kevin.mybatis.mapping.userMapper.getAllUser";
+        List<User> users=session.selectList(statement,"ab");
+        for(User user1:users){
+            System.out.println(user1);
+        }
     }
 }
