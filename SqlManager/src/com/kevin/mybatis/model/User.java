@@ -4,33 +4,37 @@ package com.kevin.mybatis.model;
  * Created by root on 17-3-21.
  */
 public class User {
-    private int id;
-    private String userName;
-    private String userAge;
-    private String userAddress;
+    //实体类的属性和表的字段名称一一对应
+     private int id;
+     private String name;
+     private int age;
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getUserName() {
-        return userName;
-    }
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    public String getUserAge() {
-        return userAge;
-    }
-    public void setUserAge(String userAge) {
-        this.userAge = userAge;
-    }
-    public String getUserAddress() {
-        return userAddress;
-    }
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
+     public int getId() {
+         return id;
+     }
+
+     public void setId(int id) {
+         this.id = id;
+     }
+
+     public String getName() {
+         return name;
+     }
+
+     public void setName(String name) {
+         this.name = name;
+     }
+
+     public int getAge() {
+         return age;
+     }
+
+     public void setAge(int age) {
+         this.age = age;
+     }
+
+     @Override
+     public String toString() {
+         return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
+     }
 }
