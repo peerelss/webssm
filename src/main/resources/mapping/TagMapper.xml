@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.heitian.ssm.dao.TumblrDao">
+
+    <resultMap id="TagBaseMap" type="com.heitian.ssm.model.Tag">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="tags" property="tags" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectTumblrById" parameterType="int" resultMap="TumblrBaseMap">
+        SELECT * FROM t_tumblr
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAllTumblr" resultMap="TumblrBaseMap">
+        SELECT * FROM t_tumblr
+    </select>
+    <!--插入数据库-->
+    <insert id="addTumblr" parameterType="com.heitian.ssm.model.TumblrModel" useGeneratedKeys="true" keyProperty="id">
+        INSERT into t_tumblr(name,tags,level) VALUES (#{name},#{tags},#{level})
+    </insert>
+    <delete id="deleteTumblr" parameterType="int">
+        delete from t_tumblr where id=#{id}
+    </delete>
+
+    <update id="updateTumblr" parameterType="com.heitian.ssm.model.TumblrModel" >
+        update t_tumblr set name=#{name},tags=#{tags},level=#{level} where id=#{id}
+    </update>
+</mapper>
