@@ -22,5 +22,10 @@
             resultType="com.kevin.mybatis.model.TumblrDomain">
         select * from tumblr where id=#{id}
     </select>
-
+    <select id="getAllTumblrDomain" resultMap="TumblrDomainBaseMap">
+        select * from tumblr
+    </select>
+    <select id="selectTumblrDomainByLimit" resultMap="TumblrDomainBaseMap">
+        select * from tumblr
+    </select>
 </mapper>

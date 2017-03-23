@@ -1,9 +1,11 @@
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import com.kevin.mybatis.model.TumblrDomain;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -80,8 +82,11 @@ public class Test1 {
    @Test
    public void testQueryOne(){
        SqlSession session=mSqlSessionFactory.openSession();
-       String statement = "com.kevin.mybatis.mapping.tumblrDomainMapper.getTumblrDomain";//映射sql的标识字符串
+       String statement = "com.kevin.mybatis.mapping.tumblrDomainMapper.selectTumblrDomainByLimit";//映射sql的标识字符串
        //执行查询返回一个唯一user对象的sql
-       TumblrDomain user = session.selectOne(statement, 1);
+       List<TumblrDomain> user = session.selectList(statement,null,new RowBounds(5,10));
+       for(TumblrDomain tumblrDomain:user){
+           log.info(tumblrDomain);
+       }
    }
 }
