@@ -55,4 +55,14 @@ public class TumblrModel {
     public void setLevel(String level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "TumblrModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tags='" + tags + '\'' +
+                ", level='" + level + '\'' +
+                '}';
+    }
 }

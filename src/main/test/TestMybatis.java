@@ -1,4 +1,7 @@
+import com.github.pagehelper.PageHelper;
 import com.heitian.ssm.dao.TumblrDao;
+import com.heitian.ssm.dao.TumblrDomainDao;
+import com.heitian.ssm.model.TumblrDomain;
 import com.heitian.ssm.model.TumblrModel;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -6,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Created by root on 17-3-8.
@@ -16,10 +21,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestMybatis {
     private static Logger logger=Logger.getLogger(TestMybatis.class);
     @Autowired
-    private TumblrDao mTumblrDao;
+    private TumblrDomainDao mTumblrDomainDao;
     @Test
     public void test1(){
-        TumblrModel tumblrModel=mTumblrDao.selectTumblrById(1);
-        System.out.println(tumblrModel.getName());
+        PageHelper.startPage(2,5);
+        List<TumblrDomain> domainList=mTumblrDomainDao.selectAllTumblrDomain();
+        for(TumblrDomain domain:domainList){
+            logger.info(domain.toString());
+        }
     }
 }

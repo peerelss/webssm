@@ -40,4 +40,14 @@ public class TumblrDomain {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "TumblrDomain{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tag='" + tag + '\'' +
+                ", level=" + level +
+                '}';
+    }
 }
