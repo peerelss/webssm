@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,26 @@ public class TagManager {
         tumblrDomain.setLevel(5);
         session.update("com.kevin.mybatis.mapping.tumblrDomainMapper.updateTumblrDomain",tumblrDomain);
         tumblrDomain=session.selectOne("com.kevin.mybatis.mapping.tumblrDomainMapper.getTumblrDomain",1);*/
+
+    }
+    public static List<String> getListFromString(String str){
+        if(str==null){
+            return null;
+        }
+        List<String> list=new ArrayList<>();
+        if(str.contains(",")){
+            String[] strings=str.split(",");
+            for(int i=0;i<strings.length;i++){
+                if(strings[i]!=null&&!"".equals(strings[i])){
+                    list.add(strings[i]);
+                }
+            }
+            return list;
+        }
+        list.add(str);
+        return list;
+    }
+    public static void addList2Map(){
 
     }
 }
