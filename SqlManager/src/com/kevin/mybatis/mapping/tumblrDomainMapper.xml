@@ -28,4 +28,12 @@
     <select id="selectTumblrDomainByLimit" resultMap="TumblrDomainBaseMap">
         select * from tumblr
     </select>
+    <update id="updateTumblrDomain" parameterType="com.kevin.mybatis.model.TumblrDomain">
+        update tumblr <set>
+        <if test="name != null">name=#{name},</if>
+        <if test="tag != null">tag=#{tag},</if>
+        <if test="level != null">level=#{level},</if>
+    </set>
+        where id = #{id}
+    </update>
 </mapper>
