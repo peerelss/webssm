@@ -25,4 +25,7 @@
     <select id="getAllTumblrTag" resultMap="TumblrTagBaseMap">
         select * from t_tag
     </select>
+    <insert id="insertTumblrTag" parameterType="com.heitian.ssm.model.Tag" useGeneratedKeys="true" keyProperty="id">
+        INSERT into t_tumblr(name,tags,level) VALUES (#{name},#{tags},#{level})
+    </insert>
 </mapper>
