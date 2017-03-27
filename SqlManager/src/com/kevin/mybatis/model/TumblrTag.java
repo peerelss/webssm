@@ -1,11 +1,12 @@
 package com.kevin.mybatis.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by root on 17-3-23.
  */
-public class TumblrTag {
+public class TumblrTag implements Serializable {
     private int id;
     private String name;
     private int times;

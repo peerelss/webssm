@@ -28,4 +28,8 @@
     <insert id="insertTumblrTag" parameterType="com.heitian.ssm.model.Tag" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_tumblr(name,tags,level) VALUES (#{name},#{tags},#{level})
     </insert>
+    <!--批量插入-->
+    <insert id="addTumblrTagList" useGeneratedKeys="true" parameterType="java.util.List">
+        
+    </insert>
 </mapper>
