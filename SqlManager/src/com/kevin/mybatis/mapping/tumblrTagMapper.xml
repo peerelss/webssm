@@ -25,11 +25,14 @@
     <select id="getAllTumblrTag" resultMap="TumblrTagBaseMap">
         select * from t_tag
     </select>
-    <insert id="insertTumblrTag" parameterType="com.heitian.ssm.model.Tag" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertTumblrTag" parameterType="com.kevin.mybatis.model.TumblrTag" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_tumblr(name,tags,level) VALUES (#{name},#{tags},#{level})
     </insert>
     <!--批量插入-->
-    <insert id="addTumblrTagList" useGeneratedKeys="true" parameterType="java.util.List">
-        
+    <insert id="batchTumblrTag" parameterType="java.util.List">
+        insert INTO  t_tag(NAME ,times,recent_time) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name},#{item.times},#{item.recentTime})
+        </foreach>
     </insert>
 </mapper>

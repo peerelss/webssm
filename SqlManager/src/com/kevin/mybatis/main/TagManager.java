@@ -1,6 +1,7 @@
 package com.kevin.mybatis.main;
 
 import com.kevin.mybatis.model.TumblrDomain;
+import com.kevin.mybatis.model.TumblrTag;
 import com.kevin.mybatis.model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.RowBounds;
@@ -11,10 +12,8 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Timestamp;
+import java.util.*;
 
 /**
  * Created by root on 17-3-23.
@@ -40,13 +39,9 @@ public class TagManager {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         mSqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session=mSqlSessionFactory.openSession();
-        String statement = "com.kevin.mybatis.mapping.tumblrDomainMapper.selectTumblrDomainByLimit";//映射sql的标识字符串
+        String statement = "com.kevin.mybatis.mapping.tumblrTagMapper.batchTumblrTag";//映射sql的标识字符串
         //执行查询返回一个唯一user对象的sql
-        List<TumblrDomain> user = session.selectList(statement);
-        for(TumblrDomain tumblrDomain:user){
-            addList2Map(getListFromString(tumblrDomain.getTag()));
-        }
-        log.info("size  ="+user.size());
+
         /*Map<String,Integer> map=new HashMap<>();
         for(TumblrDomain tumblrDomain:user){
             map.put(tumblrDomain.getTag(),map.get(tumblrDomain.getTag())+1);
@@ -55,12 +50,22 @@ public class TagManager {
         tumblrDomain.setLevel(5);
         session.update("com.kevin.mybatis.mapping.tumblrDomainMapper.updateTumblrDomain",tumblrDomain);
         tumblrDomain=session.selectOne("com.kevin.mybatis.mapping.tumblrDomainMapper.getTumblrDomain",1);*/
+       /* List<TumblrDomain> user = session.selectList(statement);
+        for(TumblrDomain tumblrDomain:user){
+            addList2Map(getListFromString(tumblrDomain.getTag()));
+        }
+        log.info("size  ="+user.size());
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
                          //Map.entry<Integer,String> 映射项（键-值对）  有几个方法：用上面的名字entry
                          //entry.getKey() ;entry.getValue(); entry.setValue();
             //map.entrySet()  返回此映射中包含的映射关系的 Set视图。
             System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
-        }
+        }*/
+        List<TumblrTag> tags=new ArrayList<>();
+        tags.add(new TumblrTag("test3",0,new Timestamp(new Date().getTime())));
+        tags.add(new TumblrTag("test4",0,new Timestamp(new Date().getTime())));
+        session.insert(statement,tags);
+
     }
     public static List<String> getListFromString(String str){
         if(str==null){

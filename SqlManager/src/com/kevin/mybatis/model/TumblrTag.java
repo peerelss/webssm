@@ -12,6 +12,19 @@ public class TumblrTag implements Serializable {
     private int times;
     private Timestamp recentTime;
 
+    public TumblrTag(String name, int times, Timestamp recentTime) {
+        this.name = name;
+        this.times = times;
+        this.recentTime = recentTime;
+    }
+
+    public TumblrTag(int id, String name, int times, Timestamp recentTime) {
+        this.id = id;
+        this.name = name;
+        this.times = times;
+        this.recentTime = recentTime;
+    }
+
     public int getId() {
         return id;
     }
