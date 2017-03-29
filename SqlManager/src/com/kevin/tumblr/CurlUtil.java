@@ -17,7 +17,7 @@ public class CurlUtil {
                 ,"-x","127.0.0.1:1080"
                 ,"-o"+fileName
               //  ,url
-                , "https://www.tumblr.com/svc/indash_blog/posts?tumblelog_name_or_id=bigpunisher2b&post_id=&limit=10&offset=10&should_bypass_safemode=false"
+                , "https://www.tumblr.com/svc/indash_blog/posts?tumblelog_name_or_id=bigpunisher2b&post_id=&limit=10&offset="+url+"&should_bypass_safemode=false"
                 , "-H","Host: www.tumblr.com"
                 , "-H","User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
                 , "-H","Accept: application/json, text/javascript, */*; q=0.01"
@@ -65,8 +65,12 @@ public class CurlUtil {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }*/
-        getStringFromCurl("","baidu.html");
-        String result = TumblrJsonUtil.getStringFromTxt("../../../../baidu.html");
+       /* for(int i=0;i<100;i++){
+            getStringFromCurl(i*10+"","baidu.html");
+            String result = TumblrJsonUtil.getStringFromTxt("/media/kevin/SWAP/ssm/webssm/baidu.html");
+            TumblrJsonUtil.getImageUrlFromJson(result);
+        }*/
+        TumblrJsonUtil.getStringFilterFromTxt("/home/kevin/tumblr_bigpunisher.txt","tumblr");
 
        // System.out.println(result);
     }
