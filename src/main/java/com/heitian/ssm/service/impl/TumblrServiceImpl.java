@@ -18,26 +18,33 @@ public class TumblrServiceImpl implements TumblrService {
     @Resource
     private TumblrDao mTumblrDao;
 
+    @Override
+    public   List<TumblrModel> getTumblrListByName(String name){
+        return mTumblrDao.selectTumblrByName(name);
+    }
+    @Override
     public List<TumblrModel> getAllTumblr() {
         return mTumblrDao.selectAllTumblr();
     }
 
+    @Override
     public TumblrModel getTumblrByName(String emailOrPhone, Short state) {
         return mTumblrDao.selectTumblrByPhoneOrEmail(emailOrPhone, state);
     }
-
+    @Override
     public TumblrModel getTumblrById(int id) {
         return mTumblrDao.selectTumblrById(id);
     }
 
+    @Override
     public long addTumblr(TumblrModel tumblrModel) {
         return mTumblrDao.addTumblr(tumblrModel);
     }
-
+    @Override
     public void deleteTumblr(int id) {
         mTumblrDao.deleteTumblr(id);
     }
-
+    @Override
     public void updateTumblr(TumblrModel model){
         mTumblrDao.updateTumblr(model);
     }

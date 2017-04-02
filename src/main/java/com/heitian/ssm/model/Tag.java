@@ -1,15 +1,30 @@
 package com.heitian.ssm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by root on 17-3-22.
  */
-public class Tag {
+public class Tag implements Serializable{
     private int id;
     private String tag;
     private int times;
     private Date recentDate;
+
+    public Tag(int id, String tag, int times, Date recentDate) {
+        this.id = id;
+        this.tag = tag;
+        this.times = times;
+        this.recentDate = recentDate;
+    }
+    public Tag(String tag, int times, Date recentDate) {
+        this.tag = tag;
+        this.times = times;
+        this.recentDate = recentDate;
+    }
+    public Tag() {
+    }
 
     public int getId() {
         return id;

@@ -18,6 +18,8 @@ public interface TumblrService {
 
     TumblrModel getTumblrById(int id);
 
+    List<TumblrModel>  getTumblrListByName(String name);
+
     long addTumblr(TumblrModel tumblrModel);
 
     void deleteTumblr(int id);

@@ -47,11 +47,16 @@ public class TumblrController {
         if(null==name||"".equals(name)){
             return "error";
         }else {
-            System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
-            TumblrModel tumblrModel=new TumblrModel(name,tag,level);
-            mTumblrService.addTumblr(tumblrModel);
-            System.out.println("long = "+tumblrModel.getId());
-            return "success";
+            List<TumblrModel> tumblrModel1=mTumblrService.getTumblrListByName(name);
+            if(tumblrModel1!=null){
+                return  name+" is exist";
+            }else {
+                System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
+                TumblrModel tumblrModel=new TumblrModel(name,tag,level);
+                mTumblrService.addTumblr(tumblrModel);
+                System.out.println("long = "+tumblrModel.getId());
+                return "success";
+            }
         }
     }
     @RequestMapping(value="/delete/{id}", method = {RequestMethod.GET})
@@ -63,6 +68,17 @@ public class TumblrController {
             return "success"+"delete id = "+id;
         }else {
             return "id = "+id+" not exist";
+        }
+    }
+
+    @RequestMapping(value="/showByName/{name}", method = {RequestMethod.GET})
+    @ResponseBody
+    public String showTumblrByName(@PathVariable(value="name") String name){
+        List<TumblrModel> model=mTumblrService.getTumblrListByName(name);
+        if(model!=null||model.size()>0){
+           return model.toString();
+        }else {
+            return "name = "+name+" is not exist";
         }
     }
 

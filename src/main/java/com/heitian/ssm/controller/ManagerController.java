@@ -2,7 +2,9 @@ package com.heitian.ssm.controller;
 
 import com.heitian.ssm.conf.Constance;
 import com.heitian.ssm.manager.TumblrManager;
+import com.heitian.ssm.model.Tag;
 import com.heitian.ssm.model.TumblrModel;
+import com.heitian.ssm.service.TagService;
 import com.heitian.ssm.service.TumblrService;
 import com.heitian.ssm.utils.ClassUtil;
 import com.heitian.ssm.utils.FIleUtil;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,17 +27,18 @@ import java.util.List;
 public class ManagerController {
     @Resource
     private TumblrService mTumblrService;
+    @Resource
+    private TagService mTagService;
+
     @RequestMapping("/tumblr2txt")
     @ResponseBody
     public String writeDB2Txt(){
 
-        List<TumblrModel> models=mTumblrService.getAllTumblr();
-        if(models==null){
-            return "null";
-        }else {
+        List<Tag> tags=new ArrayList<>();
+        tags.add(new Tag("test3",0,new Timestamp(new java.util.Date().getTime())));
+        tags.add(new Tag("test4",0,new Timestamp(new java.util.Date().getTime())));
+       // mTagService.addTagList()
 
-        }
-        String result= StringUtil.list2String(ClassUtil.tumblrModelList2StringList(mTumblrService.getAllTumblr()));
-        return result;
+        return 0+"";
     }
 }
