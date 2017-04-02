@@ -9,6 +9,22 @@ public class TumblrDomain {
     private String tag;
     private int level;
 
+    public TumblrDomain() {
+    }
+
+    public TumblrDomain(String name, String tag, int level) {
+        this.name = name;
+        this.tag = tag;
+        this.level = level;
+    }
+
+    public TumblrDomain(int id, String name, String tag, int level) {
+        this.id = id;
+        this.name = name;
+        this.tag = tag;
+        this.level = level;
+    }
+
     public int getId() {
         return id;
     }

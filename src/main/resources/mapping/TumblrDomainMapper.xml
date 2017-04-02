@@ -7,7 +7,33 @@
         <result column="tag" property="tag" jdbcType="VARCHAR"/>
         <result column="level" property="level" jdbcType="BIGINT"/>
     </resultMap>
+    <!--查询所有-->
     <select id="selectAllTumblrDomain" resultMap="TumblrDomainBaseMap">
         select * from tumblr
     </select>
+    <!--插入-->
+    <insert id="addTumblrDomain" parameterType="com.heitian.ssm.model.TumblrDomain" useGeneratedKeys="true" keyProperty="id">
+        INSERT into tumblr(name,tag,level) VALUES (#{name},#{tag},#{level})
+    </insert>
+    <!--根据id查询，返回单个元素-->
+    <select id="selectTumblrDomainById" parameterType="int" resultMap="TumblrDomainBaseMap">
+        SELECT * FROM tumblr
+        WHERE id = #{id}
+    </select>
+    <!--根据域名查询，返回多个-->
+    <select id="selectTumblrDomainByName" parameterType="String" resultMap="TumblrDomainBaseMap">
+        SELECT * FROM tumblr
+        WHERE name = #{name}
+    </select>
+    <!--根据TAG查询，返回多个-->
+    <select id="selectTumblrDomainByTag" parameterType="String" resultMap="TumblrDomainBaseMap">
+        SELECT * FROM tumblr
+        WHERE tag = #{tag}
+    </select>
+    <!--根据level查询，返回多个-->
+    <select id="selectTumblrDomainByLevel" parameterType="int" resultMap="TumblrDomainBaseMap">
+        SELECT * FROM tumblr
+        WHERE level >= #{level}
+    </select>
+
 </mapper>

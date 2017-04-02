@@ -17,7 +17,20 @@ import java.util.List;
 public class TumblrDomainServiceImpl implements TumblrDomainService{
     @Resource
     private TumblrDomainDao mTumblrDomainDao;
+    @Override
     public List<TumblrDomain> selectAllTumblrDomain() {
         return mTumblrDomainDao.selectAllTumblrDomain();
     }
+
+    @Override
+    public List<TumblrDomain> selectTumblrListByName(String name) {
+        return mTumblrDomainDao.selectTumblrDomainByName(name);
+    }
+
+    @Override
+    public void addTumblrDomain(TumblrDomain domain) {
+         mTumblrDomainDao.addTumblrDomain(domain);
+    }
+
+
 }

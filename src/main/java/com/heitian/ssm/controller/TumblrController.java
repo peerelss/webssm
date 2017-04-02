@@ -1,7 +1,9 @@
 package com.heitian.ssm.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.heitian.ssm.model.TumblrDomain;
 import com.heitian.ssm.model.TumblrModel;
+import com.heitian.ssm.service.TumblrDomainService;
 import com.heitian.ssm.service.TumblrService;
 import com.heitian.ssm.utils.ClassUtil;
 import com.heitian.ssm.utils.FIleUtil;
@@ -30,6 +32,9 @@ import java.util.List;
 public class TumblrController {
     @Resource
     private TumblrService mTumblrService;
+    @Resource
+    private TumblrDomainService mTumblrDomainService;
+
     @RequestMapping("/add2tumblr")
     public String showJpg(HttpServletRequest request){
         return "/tumblr/add2tumblr";
@@ -43,17 +48,17 @@ public class TumblrController {
 
     @RequestMapping("/addTumblr")
     @ResponseBody
-    public String add2Tumblr(String name,String tag,String level){
+    public String add2Tumblr(String name,String tag,int level){
         if(null==name||"".equals(name)){
             return "error";
         }else {
-            List<TumblrModel> tumblrModel1=mTumblrService.getTumblrListByName(name);
-            if(tumblrModel1!=null){
+            List<TumblrDomain> tumblrDomains=mTumblrDomainService.selectTumblrListByName(name);
+            if(tumblrDomains!=null){
                 return  name+" is exist";
             }else {
                 System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
-                TumblrModel tumblrModel=new TumblrModel(name,tag,level);
-                mTumblrService.addTumblr(tumblrModel);
+                TumblrDomain tumblrModel=new TumblrDomain(name,tag,level);
+                mTumblrDomainService.addTumblrDomain(tumblrModel);
                 System.out.println("long = "+tumblrModel.getId());
                 return "success";
             }

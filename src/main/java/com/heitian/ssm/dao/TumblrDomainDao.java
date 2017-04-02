@@ -1,6 +1,7 @@
 package com.heitian.ssm.dao;
 
 import com.heitian.ssm.model.TumblrDomain;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,4 +12,6 @@ import java.util.List;
 @Repository
 public interface TumblrDomainDao {
     List<TumblrDomain> selectAllTumblrDomain();
+    List<TumblrDomain> selectTumblrDomainByName(@Param("name")String name);
+    void addTumblrDomain(TumblrDomain domain);
 }
