@@ -68,33 +68,9 @@ public class TagManager {
 
     }
     public static List<String> getListFromString(String str){
-        if(str==null){
-            return null;
-        }
-        List<String> list=new ArrayList<>();
-        if(str.contains(",")){
-            String[] strings=str.split(",");
-            for(int i=0;i<strings.length;i++){
-                if(strings[i]!=null&&!"".equals(strings[i])){
-                    list.add(strings[i]);
-                }
-            }
-            return list;
-        }
-        list.add(str);
-        return list;
+       return null;
     }
     public static void addList2Map(List<String> list){
-        if(list==null||list.size()==0){
-            return;
-        }else {
-            for(String str:list){
-                if(str!=null&&!"".equals(str)){
-                    map.putIfAbsent(str, 0);
-                    map.put(str,map.get(str)+1);
-                }
 
-            }
-        }
     }
 }

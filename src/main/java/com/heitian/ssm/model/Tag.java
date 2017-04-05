@@ -23,6 +23,10 @@ public class Tag implements Serializable{
         this.times = times;
         this.recentDate = recentDate;
     }
+    public Tag(String tag, int times) {
+        this.tag = tag;
+        this.times = times;
+    }
     public Tag() {
     }
 
