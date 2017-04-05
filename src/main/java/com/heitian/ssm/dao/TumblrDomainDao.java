@@ -13,5 +13,7 @@ import java.util.List;
 public interface TumblrDomainDao {
     List<TumblrDomain> selectAllTumblrDomain();
     List<TumblrDomain> selectTumblrDomainByName(@Param("name")String name);
+    List<TumblrDomain> selectTumblrDomainByTag(@Param("tag")String tag);
     void addTumblrDomain(TumblrDomain domain);
+    void updateTumblrDomain(TumblrDomain domain);
 }

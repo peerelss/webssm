@@ -53,7 +53,7 @@ public class TumblrController {
             return "error";
         }else {
             List<TumblrDomain> tumblrDomains=mTumblrDomainService.selectTumblrListByName(name);
-            if(tumblrDomains!=null){
+            if(tumblrDomains!=null&&tumblrDomains.size()>0){
                 return  name+" is exist";
             }else {
                 System.out.println("name = "+name+" tag = "+tag+"  level  ="+level);
@@ -200,7 +200,20 @@ public class TumblrController {
             return "update success";
         }
     }
-
+    @RequestMapping(value="/edit/{str1}/to/{str2}", method = {RequestMethod.GET})
+    @ResponseBody
+    public String editWrong2Right(HttpServletResponse response,@PathVariable(value="str1") String str1,@PathVariable(value = "str2") String str2){
+        List<TumblrDomain> list=mTumblrDomainService.selectTumblrListByTag(str1);
+        if(list==null||list.size()==0){
+            return "tag 为 "+str1+" 下，列表为空";
+        }else {
+            for(TumblrDomain domain:list){
+                domain.setTag(str2);
+                mTumblrDomainService.updateTumblrDomain(domain);
+            }
+            return "修改 "+list.size()+" 个/n<br>" +list.toString();
+        }
+    }
     @RequestMapping(value="/detail/{id}", method = {RequestMethod.GET})
     public void showTumblrDetail(HttpServletResponse response,@PathVariable(value="id") int id){
         try {

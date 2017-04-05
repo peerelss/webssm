@@ -28,8 +28,18 @@ public class TumblrDomainServiceImpl implements TumblrDomainService{
     }
 
     @Override
+    public List<TumblrDomain> selectTumblrListByTag(String tag) {
+        return mTumblrDomainDao.selectTumblrDomainByTag(tag);
+    }
+
+    @Override
     public void addTumblrDomain(TumblrDomain domain) {
          mTumblrDomainDao.addTumblrDomain(domain);
+    }
+
+    @Override
+    public void updateTumblrDomain(TumblrDomain domain) {
+        mTumblrDomainDao.updateTumblrDomain(domain);
     }
 
 

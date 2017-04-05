@@ -35,5 +35,7 @@
         SELECT * FROM tumblr
         WHERE level >= #{level}
     </select>
-
+    <update id="updateTumblrDomain" parameterType="com.heitian.ssm.model.TumblrDomain">
+        update tumblr set name=#{name},tag=#{tag},level=#{level} where id=#{id}
+    </update>
 </mapper>

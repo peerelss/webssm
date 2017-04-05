@@ -57,4 +57,14 @@ public class Tag implements Serializable{
     public void setRecentDate(Date recentDate) {
         this.recentDate = recentDate;
     }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", tag='" + tag + '\'' +
+                ", times=" + times +
+                ", recentDate=" + recentDate +
+                '}';
+    }
 }

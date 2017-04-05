@@ -10,6 +10,8 @@ import java.util.List;
 public interface TumblrDomainService {
     List<TumblrDomain> selectAllTumblrDomain();
     List<TumblrDomain> selectTumblrListByName(String name);
+    List<TumblrDomain> selectTumblrListByTag(String tag);
     void addTumblrDomain(TumblrDomain domain);
+    void updateTumblrDomain(TumblrDomain domain);
 }
 
