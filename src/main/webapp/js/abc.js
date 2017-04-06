@@ -62,24 +62,7 @@ function getAjax(){
     request.open("GET",urlStr);
     request.send();
 }
-function Router(){
-    this.routes = {};
-    this.curUrl = '';
 
-    this.route = function(path, callback){
-        this.routes[path] = callback || function(){};
-    };
-
-    this.refresh = function(){
-        this.curUrl = location.hash.slice(1) || '/';
-        this.routes[this.curUrl]();
-    };
-
-    this.init = function(){
-        window.addEventListener('load', this.refresh.bind(this), false);
-        window.addEventListener('hashchange', this.refresh.bind(this), false);
-    }
-}
 function checkTag() {
     var request =new XMLHttpRequest();
     request.onreadystatechange = function () { // 状态发生变化时，函数被回调
@@ -99,7 +82,7 @@ function checkTag() {
     }
     var tagTemp=document.getElementById("tag").value;
 
-    var urlStr="../tag/addTumblr?name="+nameTemp+"&tag="+tagTemp+"&level="+levelTemp;
+    var urlStr="../tag/list/"+tagTemp;
     request.open("GET",urlStr);
     request.send();
 }

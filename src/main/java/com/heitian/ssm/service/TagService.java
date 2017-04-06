@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface TagService {
     int addBatch(List<Tag> tags);
+    List<Tag> selectTagByName(String name);
 }

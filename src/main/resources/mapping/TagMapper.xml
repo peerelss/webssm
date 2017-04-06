@@ -19,4 +19,7 @@
             (#{item.tag},#{item.times},#{item.recentDate})
         </foreach>
     </insert>
+    <select id="selectTagByName" parameterType="java.lang.String" resultMap="TagBaseMap">
+          SELECT * FROM t_tag WHERE name LIKE CONCAT(CONCAT('%', #{name}), '%');
+    </select>
 </mapper>

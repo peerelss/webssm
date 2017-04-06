@@ -1,6 +1,7 @@
 package com.heitian.ssm.dao;
 
 import com.heitian.ssm.model.Tag;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 @Repository
 public interface TagDao {
     int addBatch(List<Tag> tags);
+    List<Tag> selectTagByName(@Param("name")String name);
 }

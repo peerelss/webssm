@@ -19,7 +19,7 @@
     </div>
     <div>
         <span class="name_tag">tag</span>
-        <input type="text" size="30" id="tag" name="tag" onchange="checkTag()"/>
+        <input type="text" size="30" id="tag" name="tag" OnInput="checkTag()"/>
         <br />
     </div> level
     <div class="wrapper">
@@ -52,7 +52,6 @@
 <div id="star_word">
     一般
 </div>
-
 
 </body>
 </html>

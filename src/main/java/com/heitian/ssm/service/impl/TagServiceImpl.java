@@ -23,4 +23,9 @@ public class TagServiceImpl implements TagService{
     public int addBatch(List<Tag> tags) {
         return mTagDao.addBatch(tags);
     }
+
+    @Override
+    public List<Tag> selectTagByName(String name) {
+        return mTagDao.selectTagByName(name);
+    }
 }
