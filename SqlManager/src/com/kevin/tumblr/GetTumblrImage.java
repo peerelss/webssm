@@ -15,9 +15,9 @@ import java.io.IOException;
  * Created by root on 17-3-27.
  */
 public class GetTumblrImage {
-    public static String fileName="bigpunisher2b";
+    public static String fileName="bigpunisher2b_json";
     public static void main(String[] args) {
-        for(int i=1;i<=1;i++){
+        for(int i=0;i<=1;i++){
             requestByGetMethod(i*10);
         }
     }

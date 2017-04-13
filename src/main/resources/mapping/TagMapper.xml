@@ -22,4 +22,11 @@
     <select id="selectTagByName" parameterType="java.lang.String" resultMap="TagBaseMap">
           SELECT * FROM t_tag WHERE name LIKE CONCAT(CONCAT('%', #{name}), '%');
     </select>
+    <select id="selectTagByNameAc" parameterType="java.lang.String" resultMap="TagBaseMap">
+        SELECT * FROM t_tag
+        where name=#{name}
+    </select>
+    <update id="updateTag" parameterType="com.heitian.ssm.model.Tag">
+        update t_tag set name=#{name},times=#{times} where id=#{id}
+    </update>
 </mapper>

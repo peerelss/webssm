@@ -2,6 +2,7 @@
 var Sys = {};
 var ua = navigator.userAgent.toLowerCase();
 var s;
+var json;
 (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
     (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
         (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
@@ -37,6 +38,30 @@ function fail(code) {
     var textarea = document.getElementById('test-response-text');
     textarea.value = 'Error code: ' + code;
 }
+function toJson(str) {
+    return JSON.parse(str);
+}
+function addSelectList(text) {
+    json=JSON.parse(text);
+    console.log(json);
+    var whman=document.getElementById('whman');
+    whman.length=0;
+    for(var i=0;i<json.length;i++){
+        var opt=new Option(json[i].tag,i);
+        whman.options.add(opt);
+    }
+    /*for(var o in json){
+        var opt = new Option(o.tag);
+        whman.options.add(opt);
+    }*/
+    /*for(var i=1990;i<2017;i++){
+        var opt = new Option(i*2, i);
+        whman.options.add(opt);
+    }*/
+}
+function setTag(s) {
+    document.getElementById("tag").value=json[s].tag;
+}
 function getAjax(){
     var request =new XMLHttpRequest();
     request.onreadystatechange = function () { // 状态发生变化时，函数被回调
@@ -71,7 +96,7 @@ function checkTag() {
             if (request.status === 200) {
                 // 成功，通过responseText拿到响应的文本:
                 //  alert(request.responseText);
-                return success(request.responseText);
+                return addSelectList(request.responseText);
             } else {
                 // 失败，根据响应码判断失败原因:
                 return fail(request.status);

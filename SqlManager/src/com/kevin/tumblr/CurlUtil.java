@@ -65,12 +65,12 @@ public class CurlUtil {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }*/
-       /* for(int i=0;i<100;i++){
+        for(int i=0;i<100;i++){
             getStringFromCurl(i*10+"","baidu.html");
             String result = TumblrJsonUtil.getStringFromTxt("/media/kevin/SWAP/ssm/webssm/baidu.html");
             TumblrJsonUtil.getImageUrlFromJson(result);
-        }*/
-        TumblrJsonUtil.getStringFilterFromTxt("/home/kevin/tumblr_bigpunisher.txt","tumblr");
+        }
+     //   TumblrJsonUtil.getStringFilterFromTxt("/home/kevin/tumblr_bigpunisher.txt","tumblr");
 
        // System.out.println(result);
     }

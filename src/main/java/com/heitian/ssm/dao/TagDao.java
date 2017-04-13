@@ -13,4 +13,6 @@ import java.util.List;
 public interface TagDao {
     int addBatch(List<Tag> tags);
     List<Tag> selectTagByName(@Param("name")String name);
+    Tag selectTagByNameAc(@Param("name") String name);
+    void updateTag(Tag tag);
 }
