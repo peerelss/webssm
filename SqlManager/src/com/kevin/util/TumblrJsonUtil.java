@@ -27,6 +27,21 @@ public class TumblrJsonUtil {
         return result.toString();
 
     }
+    public static String getStringFromTxt(String file,String filter){
+        StringBuilder result = new StringBuilder();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
+            String s = null;
+            while((s = br.readLine())!=null&&s.contains(filter)){//使用readLine方法，一次读一行
+                result.append(System.lineSeparator()+s);
+            }
+            br.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result.toString();
+
+    }
     public static void getStringFilterFromTxt(String file,String filter){
         StringBuilder result = new StringBuilder();
         try{
@@ -34,7 +49,7 @@ public class TumblrJsonUtil {
             String s = null;
             while((s = br.readLine())!=null){//使用readLine方法，一次读一行
                 if(s.contains(filter)){
-                    System.out.println(s);
+                    System.out.println(formatString(s));
                 }
             }
             br.close();
@@ -89,5 +104,17 @@ public class TumblrJsonUtil {
         JSONObject jsS=js.getJSONObject("original_size");
         String jsStr=jsS.get("url").toString();
         System.out.println(jsStr);
+    }
+    public static String formatString(String s){
+        if(s==null||s.equals("")){
+            return "";
+        }else {
+            s = s.replace("500.jpg", "1280.jpg");
+            s = s.replace("540.jpg", "1280.jpg");
+            s = s.replace("400.jpg", "1280.jpg");
+            s = s.replace("250.jpg", "1280.jpg");
+            s = s.replace("250.gif", "400.gif");
+        }
+        return s;
     }
 }
