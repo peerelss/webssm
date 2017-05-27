@@ -47,7 +47,7 @@ public class CurlUtil {
         }
     }
     public static void main(String[] args) {
-        /*String []cmds = {"curl", "-l","-o baidu.html","http://www.baidu.com"};
+        String []cmds = {"curl", "-l","-o baidu.html","http://www.baidu.com"};
         ProcessBuilder pb=new ProcessBuilder(cmds);
         pb.redirectErrorStream(true);
         Process p;
@@ -64,13 +64,13 @@ public class CurlUtil {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }*/
-        /*for(int i=0;i<50;i++){
+        }
+        for(int i=0;i<50;i++){
             getStringFromCurl(i*6+"","baidu.html");
             String result = TumblrJsonUtil.getStringFromTxt("/media/kevin/SWAP/ssm/webssm/baidu.html");
             TumblrJsonUtil.getImageUrlFromJson(result);
-        }*/
-        TumblrJsonUtil.getStringFilterFromTxt("/media/kevin/SWAP/java/big0417.txt","tumblr");
+        }
+       // TumblrJsonUtil.getStringFilterFromTxt("/media/kevin/SWAP/java/big0417.txt","tumblr");
        // System.out.println(result);
     }
     public static String getStringFromBuffer(BufferedReader br){
