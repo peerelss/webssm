@@ -7,6 +7,6 @@ import com.kevin.util.TumblrJsonUtil;
  */
 public class TumblrManagerOK {
     public static void main(String[] args) {
-        TumblrJsonUtil.getStringFilterFromTxt("/home/kevin/big2tumblt0527.txt","tumblr");
+        TumblrJsonUtil.getStringFilterFromTxt("/media/kevin/SWAP/java/0727/big_p_0823.txt","tumblr");
     }
 }

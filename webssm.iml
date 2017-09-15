@@ -67,5 +67,7 @@
     <orderEntry type="library" name="Maven: redis.clients:jedis:2.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:4.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
   </component>
 </module>

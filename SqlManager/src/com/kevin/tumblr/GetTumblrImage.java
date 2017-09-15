@@ -17,7 +17,7 @@ import java.io.IOException;
 public class GetTumblrImage {
     public static String fileName="bigpunisher2b_json1";
     public static void main(String[] args) {
-        for(int i=0;i<=1;i++){
+        for(int i=0;i<=100;i++){
             requestByGetMethod(i*10);
         }
     }
@@ -64,19 +64,14 @@ public class GetTumblrImage {
         RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
         try {
             //用get方法发送http请求
-            HttpGet get = new HttpGet("https://www.tumblr.com/svc/indash_blog/posts?tumblelog_name_or_id=bigpunisher2b&post_id=&limit=10&offset=10&should_bypass_safemode=false");
+            HttpGet get = new HttpGet("https://www.tumblr.com/svc/indash_blog?tumblelog_name_or_id=bigpunisher2b&post_id=&limit=10&offset=10&should_bypass_safemode=false");
             get.addHeader("Cookie",
-                    "tmgioct=5861cb47b424f30747288660; rxx=c5xo455p98g.kekn23d&v=1; _ga=GA1.2.1543028043.1482804043; anon_id=CYXBPBUFVSEQAQBRQIMEDLJTIMDIMBEV;" +
-                            " yx=59ucnvgp63vdo%26o%3D3%26f%3Dyu; __utma=189990958.1543028043.1482804043.1482889002.1482892386.5;" +
-                            " __utmz=189990958.1482892386.5.5.utmcsr=girlwiththegypsyheart.tumblr.com|utmccn=(referral)|utmcmd=referral|utmcct=/archive; pfp=2jdsRSLcCB1dsu7SFuvAoV8vMgMTb36oyIuPVD1r;" +
-                            " pfs=wYARlm9YRt5bZc226EsU9wkNzQI; pfe=1498360616; pfu=220366685; language=%2Czh_CN; logged_in=1; nts=false; capture=u3NaZqO5AnmbCTlVv6YTS5tb8; __utmc=189990958;" +
-                            " devicePixelRatio=1; documentWidth=1744");
+                    "tmgioct=5861cb47b424f30747288660; rxx=c5xo455p98g.kekn23d&v=1; _ga=GA1.2.1543028043.1482804043; yx=59ucnvgp63vdo%26o%3D3%26f%3Dyu; __utma=189990958.1543028043.1482804043.1482892386.1494663601.6; __utmz=189990958.1494663601.6.6.utmcsr=beautiful-women-profiles.tumblr.com|utmccn=(referral)|utmcmd=referral|utmcct=/post/63393241654/bianca-beauchamp-aka-queen-of-latex-featured-in-my; language=%2Czh_CN; anon_id=MLSJFMDMRQTHXYAJGUYLSTKGVEZPKYXK; logged_in=1; pfp=4XipYCZOVWnPkvAdyNEYPerJO9nU9gzw3Yo1mJB2; pfs=mbWxYRTdvOlfIUv2AuhAQYZe6Uc; pfe=1506763822; pfu=220366685; __utmc=189990958; capture=u3NaZqO5AnmbCTlVv6YTS5tb8; pfx=6d8a124e69d7040f5a284300c50ac7ced1c8a9db4ad112f49898afd11564ea06%230%239412220959; nts=false; devicePixelRatio=1; documentWidth=1907");
             get.addHeader("Accept",
                     "application/json, text/javascript, */*; q=0.01");
-            get.addHeader("Accept-Encoding",
-                    "gzip, deflate, br");
+
             get.addHeader("Accept-Language",
-                    "en-US,en;q=0.5");
+                    "en-US,en;q=0.5 --compressed");
             get.addHeader("Connection",
                     "keep-alive");
             get.addHeader("Host",
